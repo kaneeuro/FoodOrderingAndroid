@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/imgbackground"
+    tools:context="com.sadicomputing.foodordering.activity.LoginActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@mipmap/ic_logo"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="50dp"
+                android:contentDescription="@string/logo"/>
+
+            <EditText
+                android:id="@+id/login"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/customedittext"
+                android:hint="@string/hint_login"
+                android:inputType="text"
+                android:typeface="serif"
+                android:maxLines="1"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@mipmap/ic_action_login"
+                android:drawableStart="@mipmap/ic_action_login"/>
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/customedittext"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:typeface="serif"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@mipmap/ic_password"
+                android:drawableStart="@mipmap/ic_password"/>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custombutton"
+                android:text="@string/btn_login"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/passwordoublie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="160dp"
+                android:layout_marginLeft="160dp"
+                android:text="@string/password_oublie"
+                android:textStyle="italic"
+                android:clickable="true"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/cpv_default_color"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+    </ScrollView>
+</android.support.v4.widget.NestedScrollView>

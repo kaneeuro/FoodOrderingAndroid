@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Food Ordering</string>
+    <string name="logo">logo de l\'application</string>
+    <string name="hint_email">Email</string>
+    <string name="btn_login">Se Connecter</string>
+    <string name="hint_login">Login</string>
+    <string name="hint_password">Mot de passe</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Paramètres</string>
+    <string name="password_oublie">Mot de passe oublié ?</string>
+    <string name="action_notifications">Notifications</string>
+    <string name="action_logout">Déconnexion</string>
+    <string name="action_more">Détails</string>
+    <string name="commande">Commande</string>
+    <string name="message">Message</string>
+    <string name="title_activity_serveur_commande">Commande</string>
+    <string name="platsdujour">Plats du jour</string>
+    <string name="menudujour">Menu du jour</string>
+    <string name="viennoiseries">Viennoiseries</string>
+    <string name="autres">Autres</string>
+    <string name="menu">Menu</string>
+    <string name="title_activity_serveur_platsdujour">Plats du jour</string>
+    <string name="facture">Facture</string>
+    <string name="title_activity_serveur_viennoiseries">Viennoiseries</string>
+    <string name="title_activity_serveur_menu">Menu</string>
+    <string name="title_activity_serveur_resume_commande">ServeurResumeCommandeActivity</string>
+    <string name="passerlacommande">Passer la commande</string>
+    <string name="total">Total :</string>
+    <string name="prixtotal">Prix total</string>
+    <string name="prixarticle">prix</string>
+    <string name="articlecommande">Article</string>
+    <string name="quantite">1</string>
+    <string name="title_activity_serveur_details_article">ServeurDetailsArticleActivity</string>
+    <string name="action_commande">Commande</string>
+    <string name="pasdecommande">Vos commandes apparaîtront ici.</string>
+</resources>

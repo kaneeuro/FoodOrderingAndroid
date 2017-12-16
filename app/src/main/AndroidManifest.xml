@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sadicomputing.foodordering">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.serveur.ServeurCommandeActivity"
+            android:label="@string/title_activity_serveur_commande"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sadicomputing.foodordering.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.serveur.ServeurPlatsdujourActivity"
+            android:label="@string/title_activity_serveur_platsdujour"
+            android:parentActivityName=".activity.serveur.ServeurCommandeActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sadicomputing.foodordering.activity.serveur.ServeurCommandeActivity" />
+        </activity>
+        <activity
+            android:name=".activity.serveur.ServeurViennoiseriesActivity"
+            android:label="@string/title_activity_serveur_viennoiseries"
+            android:parentActivityName=".activity.serveur.ServeurCommandeActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sadicomputing.foodordering.activity.serveur.ServeurCommandeActivity" />
+        </activity>
+        <activity
+            android:name=".activity.serveur.ServeurMenuActivity"
+            android:label="@string/title_activity_serveur_menu"
+            android:parentActivityName=".activity.serveur.ServeurCommandeActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sadicomputing.foodordering.activity.serveur.ServeurCommandeActivity" />
+        </activity>
+        <activity
+            android:name=".activity.serveur.ServeurResumeCommandeActivity"
+            android:label="@string/title_activity_serveur_resume_commande"
+            android:parentActivityName=".activity.serveur.ServeurCommandeActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sadicomputing.foodordering.activity.serveur.ServeurCommandeActivity" />
+        </activity>
+        <activity
+            android:name=".activity.serveur.ServeurDetailsArticleActivity"
+            android:label="@string/title_activity_serveur_details_article"
+            android:parentActivityName=".activity.serveur.ServeurMenuActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sadicomputing.foodordering.activity.serveur.ServeurMenuActivity" />
+        </activity>
+    </application>
+
+</manifest>
