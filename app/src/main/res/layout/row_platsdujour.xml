@@ -20,8 +20,8 @@
                     android:id="@+id/imageplatsdujour"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:padding="5dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/icons8_paella"
                     android:contentDescription="@string/action_more"/>
                 <LinearLayout
                     android:layout_width="0dp"

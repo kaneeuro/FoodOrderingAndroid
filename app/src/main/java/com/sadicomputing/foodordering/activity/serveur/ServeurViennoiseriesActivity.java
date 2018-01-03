@@ -94,7 +94,7 @@ public class ServeurViennoiseriesActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main_commande, menu);
         return true;
     }
 
@@ -106,41 +106,15 @@ public class ServeurViennoiseriesActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_notification) {
-            return true;
-        }
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        if (id == R.id.action_logout) {
-            alertDialog(contextView);
+        if (id == R.id.action_suivant) {
+            ServeurResumeCommandeActivity.prixTotal=0;
+            startActivity(new Intent(getApplicationContext(), ServeurResumeCommandeActivity.class));
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void alertDialog(Context view){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setIcon(R.drawable.ic_action_alert);
-        alertDialogBuilder.setTitle("Confirmation");
-        alertDialogBuilder.setMessage("Voulez-vous vraiment quitter cette application ?");
-        alertDialogBuilder.setPositiveButton("OUI",new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                finish();
-            }
-        });
-        alertDialogBuilder.setNegativeButton("NON",new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
-    }
     public void serverDialog(Context view){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setIcon(R.drawable.ic_action_alert);

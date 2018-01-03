@@ -15,6 +15,9 @@ public class Categorie {
     @SerializedName("nom")
     @Expose
     private String nom;
+    @SerializedName("imageUrl")
+    @Expose
+    private String imageUrl;
     @SerializedName("catalogue")
     @Expose
     private Catalogue catalogue;
@@ -52,4 +55,11 @@ public class Categorie {
     public Categorie() {
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }

@@ -1,6 +1,16 @@
 package com.sadicomputing.foodordering.utils;
 
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.sadicomputing.foodordering.R;
+import com.squareup.picasso.Picasso;
+
 import java.security.SecureRandom;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by modykane on 14/12/2017.
@@ -10,6 +20,8 @@ public class Constantes {
 
     private static final String ALPHA_NUMERIC = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private static final String NUMERIC = "0123456789";
+    private static final String SERVER_BASE_URL = "http://10.0.2.2/FoodOrdering/images/uploads/";
+
     private static SecureRandom rnd = new SecureRandom();
 
     public static String randomString(){
@@ -19,4 +31,18 @@ public class Constantes {
             sb.append(NUMERIC.charAt(rnd.nextInt(NUMERIC.length())));
         return sb.toString();
     }
+
+    public static String formatDate(String strDate){
+        SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); // EEE (E) d MMM yyyy HH:mm:ss => Monday (Mon) 01 Jan 2017 00:00:00
+        Timestamp stamp = new Timestamp(Long.parseLong(strDate));
+        return sf.format(new Date(stamp.getTime()));
+    }
+
+    public static void loadImage(Context context, String imageUrl, ImageView imageView){
+        if (imageUrl.contains(SERVER_BASE_URL))
+            Picasso.with(context).load(imageUrl).into(imageView);
+        else
+            Picasso.with(context).load(SERVER_BASE_URL+imageUrl).placeholder(R.drawable.icons8_restaurant_menu).into(imageView);
+    }
+
 }

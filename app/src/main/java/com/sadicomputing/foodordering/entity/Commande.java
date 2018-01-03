@@ -2,12 +2,15 @@ package com.sadicomputing.foodordering.entity;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
+
+import java.util.List;
 
 /**
  * Created by modykane on 09/12/2017.
  */
 
-public class Commande {
+public class Commande extends ExpandableGroup<CommandeArticle>{
 
     @SerializedName("idCommande")
     @Expose
@@ -76,8 +79,8 @@ public class Commande {
         this.table = table;
     }
 
-    public Commande(Long numero, Integer statut, String date, Employe employe, Tables table) {
-
+    public Commande(String title, List<CommandeArticle> commandeArticles, Long numero, Integer statut, String date, Employe employe, Tables table) {
+        super(title, commandeArticles);
         this.numero = numero;
         this.statut = statut;
         this.date = date;
@@ -85,7 +88,8 @@ public class Commande {
         this.table = table;
     }
 
-    public Commande() {
-
+    public Commande(String title, List<CommandeArticle> commandeArticles){
+        super(title, commandeArticles);
     }
+
 }

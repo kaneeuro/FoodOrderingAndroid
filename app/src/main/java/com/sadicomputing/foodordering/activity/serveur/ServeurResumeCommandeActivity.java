@@ -5,39 +5,31 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.sadicomputing.foodordering.R;
 import com.sadicomputing.foodordering.activity.LoginActivity;
 import com.sadicomputing.foodordering.activity.MainActivity;
 import com.sadicomputing.foodordering.adapter.ArticleCommandeAdapter;
-import com.sadicomputing.foodordering.adapter.PlatsdujourAdapter;
-import com.sadicomputing.foodordering.entity.Article;
 import com.sadicomputing.foodordering.entity.Commande;
 import com.sadicomputing.foodordering.entity.CommandeArticle;
 import com.sadicomputing.foodordering.entity.CommandeArticleTemporaire;
+import com.sadicomputing.foodordering.entity.Tables;
 import com.sadicomputing.foodordering.service.RetrofitService;
 import com.sadicomputing.foodordering.service.RetrofitUtlis;
 import com.sadicomputing.foodordering.utils.Constantes;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -53,7 +45,6 @@ public class ServeurResumeCommandeActivity extends AppCompatActivity {
     private List<CommandeArticleTemporaire> articles = new ArrayList<>();
     private List<CommandeArticle> commandeArticles = new ArrayList<>();
     private SwipeRefreshLayout mSwipeLayout;
-    public static SwipeRefreshLayout mSwipeLayoutCommande;
     public static TextView textView;
     public TextView textView2, textView3;
     private Button button;
@@ -70,14 +61,14 @@ public class ServeurResumeCommandeActivity extends AppCompatActivity {
 
         retrofitService = RetrofitUtlis.getRetrofitService();
         recyclerView = (RecyclerView) findViewById(R.id.reclycerViewPlatsdujour);
-        mSwipeLayoutCommande=mSwipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayoutPlatsdujour);
+        mSwipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayoutPlatsdujour);
 
         textView = findViewById(R.id.prixtotal);
         textView2 = findViewById(R.id.total);
         textView3 = findViewById(R.id.pasdecommande);
         button = findViewById(R.id.passerlacommande);
 
-        mAdapter = new ArticleCommandeAdapter(this, articles);
+        mAdapter = new ArticleCommandeAdapter(this, articles, mSwipeLayout);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -134,9 +125,11 @@ public class ServeurResumeCommandeActivity extends AppCompatActivity {
     }
 
     public void saveCommandeArticles() {
-        Commande commande = new Commande(Long.valueOf(Constantes.randomString()),1,null,LoginActivity.compte.getEmploye(),null);
+        Commande commande = new Commande(null, null, Long.valueOf(Constantes.randomString()), 1, null, LoginActivity.compte.getEmploye(), new Tables(MainActivity.numeroTable,2));
         for (CommandeArticleTemporaire cat:articles) {
-            commandeArticles.add(new CommandeArticle(cat.getArticle().getPrix(),cat.getArticle().getPrix()*(long) 1, (long) 1,cat.getArticle(),commande));
+            long quantiteCommande = (long) ArticleCommandeAdapter.quantiteArticle.get(cat.getIdCommandeArticleTemporaire().intValue(),1);
+            commandeArticles
+                    .add(new CommandeArticle(cat.getArticle().getPrix(), cat.getArticle().getPrix()*quantiteCommande, quantiteCommande, cat.getArticle(),commande));
         }
         retrofitService.saveCommandeArticles(commandeArticles).enqueue(new Callback<List<CommandeArticle>>() {
             @Override
@@ -174,7 +167,7 @@ public class ServeurResumeCommandeActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main_addcommande, menu);
         return true;
     }
 
@@ -186,41 +179,14 @@ public class ServeurResumeCommandeActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_notification) {
-            return true;
-        }
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        if (id == R.id.action_logout) {
-            alertDialog(contextView);
+        if (id == R.id.action_add) {
+            startActivity(new Intent(getApplicationContext(), ServeurCommandeActivity.class));
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void alertDialog(Context view){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setIcon(R.drawable.ic_action_alert);
-        alertDialogBuilder.setTitle("Confirmation");
-        alertDialogBuilder.setMessage("Voulez-vous vraiment quitter cette application ?");
-        alertDialogBuilder.setPositiveButton("OUI",new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                finish();
-            }
-        });
-        alertDialogBuilder.setNegativeButton("NON",new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
-    }
     public void serverDialog(Context view){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setIcon(R.drawable.ic_action_alert);
@@ -246,7 +212,7 @@ public class ServeurResumeCommandeActivity extends AppCompatActivity {
         alertDialogBuilder.setPositiveButton("FERMER",new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
 

@@ -14,6 +14,9 @@ public class Article {
     @SerializedName("designation")
     @Expose
     private String designation;
+    @SerializedName("imageUrl")
+    @Expose
+    private String imageUrl;
     @SerializedName("prix")
     @Expose
     private Double prix;
@@ -53,6 +56,13 @@ public class Article {
         this.categorie = categorie;
     }
 
+    public Article(String designation, String imageUrl, Double prix, Categorie categorie) {
+        this.designation = designation;
+        this.imageUrl = imageUrl;
+        this.prix = prix;
+        this.categorie = categorie;
+    }
+
     public Article(String designation, Double prix, Categorie categorie) {
 
         this.designation = designation;
@@ -61,5 +71,13 @@ public class Article {
     }
 
     public Article() {
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

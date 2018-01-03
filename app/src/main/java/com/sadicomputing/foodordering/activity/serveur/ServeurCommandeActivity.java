@@ -41,7 +41,6 @@ public class ServeurCommandeActivity extends AppCompatActivity {
         cardViewMenu = (CardView) findViewById(R.id.menu);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         cardViewPlatsdujour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

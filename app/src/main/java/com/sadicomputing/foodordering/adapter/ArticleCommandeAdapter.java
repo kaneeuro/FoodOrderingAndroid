@@ -3,15 +3,13 @@ package com.sadicomputing.foodordering.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.KeyEvent;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,8 +17,6 @@ import android.widget.Toast;
 import com.sadicomputing.foodordering.R;
 import com.sadicomputing.foodordering.activity.LoginActivity;
 import com.sadicomputing.foodordering.activity.MainActivity;
-import com.sadicomputing.foodordering.activity.serveur.ServeurResumeCommandeActivity;
-import com.sadicomputing.foodordering.entity.Article;
 import com.sadicomputing.foodordering.entity.CommandeArticleTemporaire;
 import com.sadicomputing.foodordering.service.RetrofitService;
 import com.sadicomputing.foodordering.service.RetrofitUtlis;
@@ -32,7 +28,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.sadicomputing.foodordering.activity.serveur.ServeurResumeCommandeActivity.mSwipeLayoutCommande;
 import static com.sadicomputing.foodordering.activity.serveur.ServeurResumeCommandeActivity.prixTotal;
 import static com.sadicomputing.foodordering.activity.serveur.ServeurResumeCommandeActivity.textView;
 
@@ -45,9 +40,10 @@ public class ArticleCommandeAdapter extends RecyclerView.Adapter<ArticleCommande
     private RetrofitService retrofitService;
     private List<CommandeArticleTemporaire> mItems=new ArrayList<>();
     private Context mContext;
-    public static int  quantiteArticle;
     private CommandeArticleTemporaire article;
     private int quantite=1;
+    public static SparseIntArray quantiteArticle = new SparseIntArray();
+    private SwipeRefreshLayout mSwipeLayout;
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
@@ -75,10 +71,11 @@ public class ArticleCommandeAdapter extends RecyclerView.Adapter<ArticleCommande
         }
     }
 
-    public ArticleCommandeAdapter(Context context, List<CommandeArticleTemporaire> articles) {
+    public ArticleCommandeAdapter(Context context, List<CommandeArticleTemporaire> articles, SwipeRefreshLayout mSwipeLayout) {
         mItems = articles;
         mContext = context;
         retrofitService = RetrofitUtlis.getRetrofitService();
+        this.mSwipeLayout = mSwipeLayout;
     }
 
     @Override
@@ -110,6 +107,9 @@ public class ArticleCommandeAdapter extends RecyclerView.Adapter<ArticleCommande
                     holder.textView2.setText(""+article.getArticle().getPrix()*quantite+" FCFA");
                     prixTotal-=article.getArticle().getPrix();
                     textView.setText(prixTotal+" FCFA");
+                    for (int i = 0; i < getItemCount(); i++) {
+                        quantiteArticle.put(article.getIdCommandeArticleTemporaire().intValue(),quantite);
+                    }
                 }
             }
         });
@@ -123,6 +123,9 @@ public class ArticleCommandeAdapter extends RecyclerView.Adapter<ArticleCommande
                 holder.textView2.setText(""+article.getArticle().getPrix()*quantite+" FCFA");
                 prixTotal+=article.getArticle().getPrix();
                 textView.setText(prixTotal+" FCFA");
+                for (int i = 0; i < getItemCount(); i++) {
+                    quantiteArticle.put(article.getIdCommandeArticleTemporaire().intValue(),quantite);
+                }
             }
         });
 
@@ -162,6 +165,7 @@ public class ArticleCommandeAdapter extends RecyclerView.Adapter<ArticleCommande
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()){
                     getArticlesTemporairesByEmploye();
+                    MainActivity.mNotificationsCountCommande-=1;
                     Toast.makeText(mContext, "L'article a été supprimé de la commande", Toast.LENGTH_LONG).show();
                 }
             }
@@ -175,13 +179,12 @@ public class ArticleCommandeAdapter extends RecyclerView.Adapter<ArticleCommande
     }
 
     private void getArticlesTemporairesByEmploye() {
-        mSwipeLayoutCommande.setRefreshing(true);
+        mSwipeLayout.setRefreshing(true);
         retrofitService.getArticlesTemporairesByEmploye(LoginActivity.compte.getEmploye()).enqueue(new Callback<List<CommandeArticleTemporaire>>() {
             @Override
             public void onResponse(Call<List<CommandeArticleTemporaire>> call, Response<List<CommandeArticleTemporaire>> response) {
                 if (response.isSuccessful()){
                     prixTotal=0;
-                    MainActivity.mNotificationsCountCommande=getItemCount();
                     for (CommandeArticleTemporaire commandeArticleTemporaire:response.body()) {
                         prixTotal += commandeArticleTemporaire.getArticle().getPrix();
                     }
@@ -195,7 +198,7 @@ public class ArticleCommandeAdapter extends RecyclerView.Adapter<ArticleCommande
                 //serverDialog(contextView);
             }
         });
-        mSwipeLayoutCommande.setRefreshing(false);
+        mSwipeLayout.setRefreshing(false);
     }
 
     private void serverDialog(){

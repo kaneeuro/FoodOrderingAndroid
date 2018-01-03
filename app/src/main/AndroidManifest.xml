@@ -69,13 +69,31 @@
                 android:value="com.sadicomputing.foodordering.activity.serveur.ServeurCommandeActivity" />
         </activity>
         <activity
-            android:name=".activity.serveur.ServeurDetailsArticleActivity"
-            android:label="@string/title_activity_serveur_details_article"
-            android:parentActivityName=".activity.serveur.ServeurMenuActivity"
+            android:name=".activity.comptable.ComptableFactureCommandeActivity"
+            android:label="@string/title_activity_comptable_facture_commande"
+            android:parentActivityName=".activity.comptable.ComptableCommandeActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sadicomputing.foodordering.activity.serveur.ServeurMenuActivity" />
+                android:value="com.sadicomputing.foodordering.activity.comptable.ComptableCommandeActivity" />
+        </activity>
+        <activity
+            android:name=".activity.cuisinier.CuisineCommandeActivity"
+            android:label="@string/title_activity_cuisine_commande"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sadicomputing.foodordering.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.comptable.ComptableCommandeActivity"
+            android:label="@string/title_activity_comptable_commande"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sadicomputing.foodordering.activity.MainActivity" />
         </activity>
     </application>
 

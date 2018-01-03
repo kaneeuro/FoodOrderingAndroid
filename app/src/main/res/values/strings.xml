@@ -34,7 +34,14 @@
     <string name="prixarticle">prix</string>
     <string name="articlecommande">Article</string>
     <string name="quantite">1</string>
-    <string name="title_activity_serveur_details_article">ServeurDetailsArticleActivity</string>
+    <string name="title_activity_comptable_facture_commande">ComptableFactureCommandeActivity</string>
     <string name="action_commande">Commande</string>
     <string name="pasdecommande">Vos commandes apparaîtront ici.</string>
+    <string name="numerotable">Numéro de la table</string>
+    <string name="numerodelatable">Saisir le numéro de la table</string>
+    <string name="action_suivant">Suivant</string>
+    <string name="action_add">Ajouter article</string>
+    <string name="title_activity_cuisine_commande">CuisineCommandeActivity</string>
+    <string name="title_activity_comptable_commande">ComptableCommandeActivity</string>
+    <string name="imprimerfacture">Imprimer la facture</string>
 </resources>

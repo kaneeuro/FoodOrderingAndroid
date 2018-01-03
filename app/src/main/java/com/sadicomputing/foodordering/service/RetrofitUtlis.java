@@ -13,6 +13,6 @@ public class RetrofitUtlis {
 
     public static RetrofitService getRetrofitService() {
 
-        return RetrofitClient.getClient(BASE_URL).create(RetrofitService.class);
+        return RetrofitClient.getClient(BASE_URL_LOCALHOST).create(RetrofitService.class);
     }
 }

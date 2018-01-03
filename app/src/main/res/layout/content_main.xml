@@ -43,9 +43,9 @@
                         android:orientation="vertical"
                         android:gravity="center">
                         <ImageView
+                            android:id="@+id/commandeServeurImgView"
                             android:layout_width="200dp"
                             android:layout_height="150dp"
-                            android:src="@drawable/icons8_restaurant_menu"
                             android:padding="16dp"
                             android:contentDescription="@string/action_more"/>
                         <TextView
@@ -81,9 +81,9 @@
                         android:orientation="vertical"
                         android:gravity="center">
                         <ImageView
+                            android:id="@+id/messageServeurImgView"
                             android:layout_width="200dp"
                             android:layout_height="150dp"
-                            android:src="@drawable/icons8_urgent_message"
                             android:padding="16dp"
                             android:contentDescription="@string/action_more"/>
                         <TextView
@@ -132,7 +132,7 @@
                         <ImageView
                             android:layout_width="200dp"
                             android:layout_height="150dp"
-                            android:src="@drawable/icons8_meal"
+                            android:id="@+id/commandeCuisinierImgView"
                             android:padding="16dp"
                             android:contentDescription="@string/action_more"/>
                         <TextView
@@ -170,7 +170,7 @@
                         <ImageView
                             android:layout_width="200dp"
                             android:layout_height="150dp"
-                            android:src="@drawable/icons8_urgent_message"
+                            android:id="@+id/messageCuisinierImgView"
                             android:padding="16dp"
                             android:contentDescription="@string/action_more"/>
                         <TextView
@@ -219,7 +219,7 @@
                         <ImageView
                             android:layout_width="200dp"
                             android:layout_height="150dp"
-                            android:src="@drawable/icons8_invoice"
+                            android:id="@+id/commandeComptableImgView"
                             android:padding="16dp"
                             android:contentDescription="@string/action_more"/>
                         <TextView
@@ -257,7 +257,7 @@
                         <ImageView
                             android:layout_width="200dp"
                             android:layout_height="150dp"
-                            android:src="@drawable/icons8_urgent_message"
+                            android:id="@+id/messageComptableImgView"
                             android:padding="16dp"
                             android:contentDescription="@string/action_more"/>
                         <TextView

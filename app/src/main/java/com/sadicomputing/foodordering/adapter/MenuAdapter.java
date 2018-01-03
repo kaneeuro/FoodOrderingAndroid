@@ -3,9 +3,7 @@ package com.sadicomputing.foodordering.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -16,15 +14,13 @@ import com.jaychang.srv.SimpleCell;
 import com.jaychang.srv.SimpleViewHolder;
 import com.sadicomputing.foodordering.R;
 import com.sadicomputing.foodordering.activity.LoginActivity;
-import com.sadicomputing.foodordering.activity.MainActivity;
-import com.sadicomputing.foodordering.activity.serveur.ServeurDetailsArticleActivity;
-import com.sadicomputing.foodordering.activity.serveur.ServeurMenuActivity;
+import com.sadicomputing.foodordering.activity.comptable.ComptableFactureCommandeActivity;
 import com.sadicomputing.foodordering.entity.Article;
 import com.sadicomputing.foodordering.entity.CommandeArticleTemporaire;
 import com.sadicomputing.foodordering.service.RetrofitService;
 import com.sadicomputing.foodordering.service.RetrofitUtlis;
+import com.sadicomputing.foodordering.utils.Constantes;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -78,7 +74,7 @@ public class MenuAdapter extends SimpleCell<Article, MenuAdapter.ViewHolder> {
     protected void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i, @NonNull Context context, Object o) {
         viewHolder.textView.setText(getItem().getDesignation());
         viewHolder.textView2.setText(""+getItem().getPrix()+" FCFA");
-        viewHolder.imageView.setImageResource(R.drawable.icons8_details_pane);
+        Constantes.loadImage(mContext,getItem().getImageUrl(),viewHolder.imageView);
         viewHolder.imageView2.setImageResource(R.drawable.ic_action_add);
         viewHolder.imageView3.setImageResource(R.drawable.ic_action_details);
 
@@ -96,7 +92,7 @@ public class MenuAdapter extends SimpleCell<Article, MenuAdapter.ViewHolder> {
             @Override
             public void onClick(View view) {
                 article = getItem(viewHolder.getAdapterPosition());
-                Intent intent = new Intent(mContext, ServeurDetailsArticleActivity.class);
+                Intent intent = new Intent(mContext, ComptableFactureCommandeActivity.class);
                 mContext.startActivity(intent);
 
             }

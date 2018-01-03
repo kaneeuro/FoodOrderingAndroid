@@ -19,6 +19,8 @@ import com.sadicomputing.foodordering.entity.CommandeArticleTemporaire;
 import com.sadicomputing.foodordering.entity.Tables;
 import com.sadicomputing.foodordering.service.RetrofitService;
 import com.sadicomputing.foodordering.service.RetrofitUtlis;
+import com.sadicomputing.foodordering.utils.Constantes;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -87,16 +89,16 @@ public class PlatsdujourAdapter extends RecyclerView.Adapter<PlatsdujourAdapter.
         Article item = mItems.get(position);
         holder.textView.setText(item.getDesignation());
         holder.textView2.setText(""+item.getPrix()+" FCFA");
-        holder.imageView.setImageResource(R.drawable.icons8_paella);
+        Constantes.loadImage(mContext,item.getImageUrl(),holder.imageView);
         holder.imageView2.setImageResource(R.drawable.ic_action_add);
 
         holder.imageView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 article = getItem(holder.getAdapterPosition());
-                //CommandeArticleTemporaire temporaire = new CommandeArticleTemporaire(LoginActivity.compte.getEmploye(),article,new Tables(1));
-                //articleTemporaires.add(temporaire);
-                //Toast.makeText(mContext,article.getDesignation()+" est ajouté à la commande", Toast.LENGTH_SHORT).show();
+                MenuAdapter menuAdapter = new MenuAdapter(article,mContext,mItems);
+                menuAdapter.addArticleTemporaire(new CommandeArticleTemporaire(LoginActivity.compte.getEmploye(),article));
+                menuAdapter.updateNotificationsBadge();
             }
         });
     }

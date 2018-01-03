@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sadicomputing.foodordering.activity.serveur.ServeurDetailsArticleActivity">
+    tools:context="com.sadicomputing.foodordering.activity.comptable.ComptableFactureCommandeActivity">
 
 
     <android.support.design.widget.AppBarLayout
@@ -33,13 +33,5 @@
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_serveur_details_article" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_action_plus" />
 
 </android.support.design.widget.CoordinatorLayout>

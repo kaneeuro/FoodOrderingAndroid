@@ -53,6 +53,7 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:typeface="serif"
+                android:fontFamily="sans-serif"
                 android:drawablePadding="10dp"
                 android:drawableLeft="@mipmap/ic_password"
                 android:drawableStart="@mipmap/ic_password"/>
@@ -76,7 +77,7 @@
                 android:clickable="true"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/cpv_default_color"
+                android:textColor="@color/colorPrimary"
                 android:visibility="gone"/>
 
         </LinearLayout>

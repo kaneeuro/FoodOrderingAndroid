@@ -32,7 +32,9 @@ public class Employe implements Serializable {
     @SerializedName("fonction")
     @Expose
     private String fonction;
-    //private Restaurant restaurant;
+    @SerializedName("restaurant")
+    @Expose
+    private Restaurant restaurant;
     //private Cuisine cuisine;
 
     public Employe() {
@@ -101,5 +103,13 @@ public class Employe implements Serializable {
 
     public void setFonction(String fonction) {
         this.fonction = fonction;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 }

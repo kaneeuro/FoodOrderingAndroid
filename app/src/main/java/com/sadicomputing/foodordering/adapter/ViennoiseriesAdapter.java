@@ -10,7 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sadicomputing.foodordering.R;
+import com.sadicomputing.foodordering.activity.LoginActivity;
 import com.sadicomputing.foodordering.entity.Article;
+import com.sadicomputing.foodordering.entity.CommandeArticleTemporaire;
+import com.sadicomputing.foodordering.utils.Constantes;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,14 +74,16 @@ public class ViennoiseriesAdapter extends RecyclerView.Adapter<ViennoiseriesAdap
         Article item = mItems.get(position);
         holder.textView.setText(item.getDesignation());
         holder.textView2.setText(""+item.getPrix()+" FCFA");
-        holder.imageView.setImageResource(R.drawable.icons8_cupcake);
+        Constantes.loadImage(mContext,item.getImageUrl(),holder.imageView);
         holder.imageView2.setImageResource(R.drawable.ic_action_add);
 
         holder.imageView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 article = getItem(holder.getAdapterPosition());
-                Toast.makeText(mContext,article.getDesignation()+" est ajouté à la commande", Toast.LENGTH_SHORT).show();
+                MenuAdapter menuAdapter = new MenuAdapter(article,mContext,mItems);
+                menuAdapter.addArticleTemporaire(new CommandeArticleTemporaire(LoginActivity.compte.getEmploye(),article));
+                menuAdapter.updateNotificationsBadge();
             }
         });
     }
