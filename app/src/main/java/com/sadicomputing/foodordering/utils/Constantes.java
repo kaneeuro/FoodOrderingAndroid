@@ -21,6 +21,10 @@ public class Constantes {
     private static final String ALPHA_NUMERIC = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private static final String NUMERIC = "0123456789";
     private static final String SERVER_BASE_URL = "http://10.0.2.2/FoodOrdering/images/uploads/";
+    public static final String URL_REGISTER_DEVICE = "http://172.20.10.2/FoodOrdering/RegisterDevice.php";
+    public static final String URL_SEND_SINGLE_PUSH = "http://172.20.10.2/FoodOrdering/sendSinglePush.php";
+    public static final String URL_SEND_MULTIPLE_PUSH = "http://172.20.10.2/FoodOrdering/sendMultiplePush.php";
+    public static final String URL_FETCH_DEVICES = "http://172.20.10.2/FoodOrdering/GetRegisteredDevices.php";
 
     private static SecureRandom rnd = new SecureRandom();
 

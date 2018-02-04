@@ -1,6 +1,7 @@
 package com.sadicomputing.foodordering.activity.serveur;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,13 +11,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.sadicomputing.foodordering.R;
 import com.sadicomputing.foodordering.activity.LoginActivity;
 import com.sadicomputing.foodordering.activity.MainActivity;
@@ -25,12 +32,15 @@ import com.sadicomputing.foodordering.entity.Commande;
 import com.sadicomputing.foodordering.entity.CommandeArticle;
 import com.sadicomputing.foodordering.entity.CommandeArticleTemporaire;
 import com.sadicomputing.foodordering.entity.Tables;
+import com.sadicomputing.foodordering.firebase.MyVolley;
 import com.sadicomputing.foodordering.service.RetrofitService;
 import com.sadicomputing.foodordering.service.RetrofitUtlis;
 import com.sadicomputing.foodordering.utils.Constantes;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,19 +59,21 @@ public class ServeurResumeCommandeActivity extends AppCompatActivity {
     public TextView textView2, textView3;
     private Button button;
     public static double prixTotal = 0;
+    private ProgressDialog progressDialog;
+    private Commande commandeServeur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_serveur_resume_commande);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         contextView = this;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         retrofitService = RetrofitUtlis.getRetrofitService();
-        recyclerView = (RecyclerView) findViewById(R.id.reclycerViewPlatsdujour);
-        mSwipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayoutPlatsdujour);
+        recyclerView = findViewById(R.id.reclycerViewPlatsdujour);
+        mSwipeLayout = findViewById(R.id.swipeRefreshLayoutPlatsdujour);
 
         textView = findViewById(R.id.prixtotal);
         textView2 = findViewById(R.id.total);
@@ -125,20 +137,21 @@ public class ServeurResumeCommandeActivity extends AppCompatActivity {
     }
 
     public void saveCommandeArticles() {
-        Commande commande = new Commande(null, null, Long.valueOf(Constantes.randomString()), 1, null, LoginActivity.compte.getEmploye(), new Tables(MainActivity.numeroTable,2));
+        final Commande commande = new Commande(null, null, Long.valueOf(Constantes.randomString()), 1, null, LoginActivity.compte.getEmploye(), new Tables(MainActivity.numeroTable,2));
         for (CommandeArticleTemporaire cat:articles) {
             long quantiteCommande = (long) ArticleCommandeAdapter.quantiteArticle.get(cat.getIdCommandeArticleTemporaire().intValue(),1);
-            commandeArticles
-                    .add(new CommandeArticle(cat.getArticle().getPrix(), cat.getArticle().getPrix()*quantiteCommande, quantiteCommande, cat.getArticle(),commande));
+            commandeArticles.add(new CommandeArticle(cat.getArticle().getPrix(), cat.getArticle().getPrix()*quantiteCommande, quantiteCommande, cat.getArticle(),commande));
         }
         retrofitService.saveCommandeArticles(commandeArticles).enqueue(new Callback<List<CommandeArticle>>() {
             @Override
             public void onResponse(Call<List<CommandeArticle>> call, Response<List<CommandeArticle>> response) {
                 if (response.isSuccessful()){
+                    commandeServeur = response.body().get(0).getCommande();
                     deleteAllArticlesTemporaires();
                     prixTotal=0;
                     MainActivity.mNotificationsCountCommande=0;
                     getArticlesTemporairesByEmploye();
+                    sendSinglePush();
                     commandeDialog();
                 }
             }
@@ -164,6 +177,7 @@ public class ServeurResumeCommandeActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -218,6 +232,49 @@ public class ServeurResumeCommandeActivity extends AppCompatActivity {
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
+    }
+
+    //this method will send the push notification to the CUISINIER
+    private void sendSinglePush(){
+        final String title = "FOOD ORDERING";
+        final String message = "Vous avez une nouvelle commande à préparer.\nNuméro Commande: "+commandeServeur.getNumero();
+        final String image = null;
+        final String role = "CUISINIER";
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Sending Notification ...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constantes.URL_SEND_SINGLE_PUSH,
+                new com.android.volley.Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+
+                        Toast.makeText(ServeurResumeCommandeActivity.this, response, Toast.LENGTH_LONG).show();
+                    }
+                },
+                new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("title", title);
+                params.put("message", message);
+
+                if (!TextUtils.isEmpty(image))
+                    params.put("image", image);
+
+                params.put("role", role);
+                return params;
+            }
+        };
+
+        MyVolley.getInstance(this).addToRequestQueue(stringRequest);
     }
 
 }

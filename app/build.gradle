@@ -25,28 +25,39 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    //Retrofit et Gson dependencies
-
-
-    //Recyclerview and Cardview dependencies
-
-    //compile project(':picasso-2.5.2')
-
-    //Shape Image View
-
-    //ExpandableRecyclerView and ExpandableCheckRecyclerView (for Listening to Child Click Events)
+    //Android dependencies
     compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:26.1.0'
+    testCompile 'junit:junit:4.12'
+
+    //Retrofit et Gson dependencies
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+
+    //Recyclerview and Cardview dependencies
     compile 'com.android.support:cardview-v7:26.1.0'
     compile 'com.android.support:recyclerview-v7:26.1.0'
     compile 'com.github.jaychang0917:SimpleRecyclerView:1.2.0'
+
+    //Picasso dependencies for loading images from server
     compile 'com.squareup.picasso:picasso:2.5.2'
+
+    //Shape Image View
     compile 'com.github.siyamed:android-shape-imageview:0.9.3'
+
+    //ExpandableRecyclerView and ExpandableCheckRecyclerView (for Listening to Child Click Events)
     compile 'com.thoughtbot:expandablerecyclerview:1.3'
     compile 'com.thoughtbot:expandablecheckrecyclerview:1.4'
-    testCompile 'junit:junit:4.12'
+
+    //Firebase dependencies for FCM
+    compile 'com.google.firebase:firebase-core:10.0.1'
+    compile 'com.google.firebase:firebase-messaging:10.0.1'
+
+    //Volley is an HTTP library that makes networking for Android apps easier and, most importantly, faster
+    compile 'com.android.volley:volley:1.1.0'
 }
+
+
+apply plugin: 'com.google.gms.google-services'

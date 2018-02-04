@@ -44,4 +44,11 @@
     <string name="title_activity_cuisine_commande">CuisineCommandeActivity</string>
     <string name="title_activity_comptable_commande">ComptableCommandeActivity</string>
     <string name="imprimerfacture">Imprimer la facture</string>
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <!--
+        This is the name that users will see when interacting with this channel.
+        It should describe the category of notifications that will be sent through this channel
+     -->
+    <string name="default_notification_channel_name" translatable="true">News</string>
 </resources>

@@ -25,6 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.sadicomputing.foodordering.R;
 import com.sadicomputing.foodordering.activity.comptable.ComptableCommandeActivity;
 import com.sadicomputing.foodordering.activity.cuisinier.CuisineCommandeActivity;
@@ -33,6 +34,7 @@ import com.sadicomputing.foodordering.activity.serveur.ServeurMenuActivity;
 import com.sadicomputing.foodordering.activity.serveur.ServeurPlatsdujourActivity;
 import com.sadicomputing.foodordering.activity.serveur.ServeurViennoiseriesActivity;
 import com.sadicomputing.foodordering.entity.Compte;
+import com.sadicomputing.foodordering.firebase.FirebaseMainActivity;
 import com.sadicomputing.foodordering.utils.Constantes;
 import com.sadicomputing.foodordering.utils.Utils;
 import com.squareup.picasso.Picasso;
@@ -55,12 +57,16 @@ public class MainActivity extends AppCompatActivity
     private int buttonClicked;
     private ImageView imageViewCommande, imageViewMessage;
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         contextView = this;
         compte = LoginActivity.compte;
 
@@ -124,7 +130,12 @@ public class MainActivity extends AppCompatActivity
                 numeroTableDialog();
             }
         });
-
+        cardViewMessageServeur.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), FirebaseMainActivity.class));
+            }
+        });
         cardViewCommandeCuisinier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,6 +156,8 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if (!drawer.isDrawerOpen(GravityCompat.START)) {
+            alertDialog();
         } else {
             super.onBackPressed();
         }
@@ -173,7 +186,7 @@ public class MainActivity extends AppCompatActivity
             return true;
         }
         if (id == R.id.action_logout) {
-            alertDialog(contextView);
+            alertDialog();
             return true;
         }
 
@@ -205,7 +218,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_settings) {
 
         } else if (id == R.id.nav_logout) {
-            alertDialog(contextView);
+            alertDialog();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -213,7 +226,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void alertDialog(Context view){
+    public void alertDialog(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setIcon(R.drawable.ic_action_alert);
         alertDialogBuilder.setTitle("Confirmation");
@@ -248,7 +261,7 @@ public class MainActivity extends AppCompatActivity
         editTextNumeroTable = dialogView.findViewById(R.id.numerotable);
         editTextNumeroTable.setError( "Champ obligatoire!" );
         // Add action buttons
-        alertDialogBuilder.setPositiveButton("SUIVANT", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setPositiveButton("CONTINUER", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 if (!editTextNumeroTable.getText().toString().trim().equals("")){

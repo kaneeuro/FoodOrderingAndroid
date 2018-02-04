@@ -1,8 +1,10 @@
 package com.sadicomputing.foodordering.adapter;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +12,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.jaychang.srv.SimpleCell;
 import com.jaychang.srv.SimpleRecyclerView;
 import com.jaychang.srv.SimpleViewHolder;
 import com.sadicomputing.foodordering.R;
 import com.sadicomputing.foodordering.activity.cuisinier.CuisineCommandeActivity;
+import com.sadicomputing.foodordering.activity.serveur.ServeurResumeCommandeActivity;
 import com.sadicomputing.foodordering.entity.CommandeArticle;
+import com.sadicomputing.foodordering.firebase.MyVolley;
 import com.sadicomputing.foodordering.service.RetrofitService;
 import com.sadicomputing.foodordering.service.RetrofitUtlis;
 import com.sadicomputing.foodordering.utils.Constantes;
@@ -24,7 +32,9 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,6 +51,7 @@ public class CommandeAdapter extends SimpleCell<CommandeArticle, CommandeAdapter
     private List<CommandeArticle> mItems;
     private SimpleRecyclerView simpleRecyclerView;
     private SwipeRefreshLayout mSwipeLayout;
+    private ProgressDialog progressDialog;
 
     public CommandeAdapter(@NonNull CommandeArticle item) {
         super(item);
@@ -84,6 +95,7 @@ public class CommandeAdapter extends SimpleCell<CommandeArticle, CommandeAdapter
             public void onClick(View view) {
                 article = getItem(viewHolder.getAdapterPosition());
                 article.getCommande().setStatut(2);
+                sendSinglePush();
                 updateCommandeArticle(article.getIdCommandeArticle(), article);
             }
         });
@@ -170,5 +182,48 @@ public class CommandeAdapter extends SimpleCell<CommandeArticle, CommandeAdapter
             }
         });
         mSwipeLayout.setRefreshing(false);
+    }
+
+    //this method will send the push notification to the CUISINIER
+    private void sendSinglePush(){
+        final String title = "FOOD ORDERING";
+        final String message = "Votre commande a été préparée";
+        final String image = null;
+        final String role = "SERVEUR";
+
+        progressDialog = new ProgressDialog(mContext);
+        progressDialog.setMessage("Sending Notification ...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constantes.URL_SEND_SINGLE_PUSH,
+                new com.android.volley.Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+
+                        Toast.makeText(mContext, response, Toast.LENGTH_LONG).show();
+                    }
+                },
+                new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("title", title);
+                params.put("message", message);
+
+                if (!TextUtils.isEmpty(image))
+                    params.put("image", image);
+
+                params.put("role", role);
+                return params;
+            }
+        };
+
+        MyVolley.getInstance(mContext).addToRequestQueue(stringRequest);
     }
 }

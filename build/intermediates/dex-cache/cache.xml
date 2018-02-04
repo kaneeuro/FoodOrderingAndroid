@@ -2,13 +2,85 @@
 <items version="2" >
 
     <item
+        is-multidex="false"
+        jar="/Users/modykane/.android/build-cache/33786b8d81bbfd980543e4b928530ac1be4376a3/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d6a21cc22db6d603701026214601b39255b9b998">
+        <dex dex="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/pre-dexed/debug/classes_cc5da8660b195fd806ad7b12dcfedfd85e909223.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/modykane/.android/build-cache/65a6e33f7b4c945665d64b3d3eadacf7cf85af67/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="9bdfc3e83c6bc1f8bc5807cdaf7e94ac884a2a0d">
+        <dex dex="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/pre-dexed/debug/classes_6cd1ae638363b8e6c00ff1976df8dafe6c9b73e5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/modykane/.android/build-cache/04252ae2da9c5b597d4c4a0ff958327ff81ea1d1/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="486371f97baad8e607f332f20fee1d3dd00a731a">
+        <dex dex="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/pre-dexed/debug/classes_991532ce861a114ff2550f72b6c4d70fdf6b171e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/modykane/.android/build-cache/9221d6439d29b3cc1cb098ebff4668127a8830bf/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6116e0e7069de7fc259aac8e08b84f32c2038231">
+        <dex dex="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/pre-dexed/debug/classes_47d7a695c433ab4008a2c6e6c4dd01ee201f2a46.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/modykane/.android/build-cache/52a5281400ffe5d828333a0c71930555bee60644/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="eb0d830e3eabb9deb9ec44869cf7ac7ea1ad794c">
+        <dex dex="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/pre-dexed/debug/classes_a8d1d973e00cda6647f47c878a444678b38f4f16.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/modykane/.android/build-cache/d1fc29cf9970a2fb8d9acb554f9a2216df566904/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="433f4d6aa5f21f19552afe0e6c5eff0fedba73ad">
+        <dex dex="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/pre-dexed/debug/classes_5069dbbea2da6fe01166afc756463a8cc3f3e32b.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="70c3546ea9928852b6d2973548cb3d5a82d3a497">
+        sha1="67c04650b937f13ce2ab585ae2758f42d9d7b033">
         <dex dex="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_ae265fbbfe5ad8bd5c72d5dbbd635cccec08ffc6/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/modykane/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/pre-dexed/debug/picasso-2.5.2_79ada5deccd5900f3654d8e89ab5c9627245d61b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/modykane/.android/build-cache/6a468dec7aaaa981175822b8b13b58eec12491b4/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="4b17463c814bdc562fb0392fa3494063623a0904">
+        <dex dex="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/pre-dexed/debug/classes_6b21c87747f2d1f0e61fd1b8cae4b06939c70ea0.jar" />
     </item>
     <item
         is-multidex="true"
@@ -18,6 +90,42 @@
         revision="26.0.2"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
         <dex dex="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_355cda432782269bd0daa14205ffffe61ab831c6/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/modykane/.android/build-cache/b3f4318ce9049c07dd8e06e647979bd6c11af55b/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
+        <dex dex="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/pre-dexed/debug/classes_b97952fbec9db18491186a4f4d9de7328e9d5e78.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/modykane/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.2/3edcfe49d2c6053a70a2a47e4e1c2f94998a49cf/gson-2.8.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3edcfe49d2c6053a70a2a47e4e1c2f94998a49cf">
+        <dex dex="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/pre-dexed/debug/gson-2.8.2_e00872999371f89705e0c6f3e9eb63d38193503f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/modykane/.android/build-cache/94c0aa0a753cafd13632cfe7096bf339be065447/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6addaba208e21c6da776d0ca75b6b23a6ccd5499">
+        <dex dex="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/pre-dexed/debug/classes_ceeb9009e9824de4cad4845c9fe217b79b7efd26.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/modykane/.android/build-cache/716cb0cbce9d4f830165ceb257aba72d542216d4/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="4f97957ca13c4eda0e0ec407224f3d0d8d33ce09">
+        <dex dex="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/pre-dexed/debug/classes_3100101d4a869d47fe429cb74f27b1e1ce5224db.jar" />
     </item>
 
 </items>
