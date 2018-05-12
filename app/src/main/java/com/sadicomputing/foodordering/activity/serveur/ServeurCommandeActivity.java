@@ -6,8 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
@@ -16,12 +14,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.sadicomputing.foodordering.R;
-import com.sadicomputing.foodordering.activity.LoginActivity;
-import com.sadicomputing.foodordering.service.RetrofitService;
-import com.sadicomputing.foodordering.service.RetrofitUtlis;
+import com.sadicomputing.foodordering.activity.accueil.LoginActivity;
 import com.sadicomputing.foodordering.utils.Utils;
 
-import static com.sadicomputing.foodordering.activity.MainActivity.mNotificationsCountCommande;
+import static com.sadicomputing.foodordering.activity.accueil.MainActivity.mNotificationsCountCommande;
 
 public class ServeurCommandeActivity extends AppCompatActivity {
 

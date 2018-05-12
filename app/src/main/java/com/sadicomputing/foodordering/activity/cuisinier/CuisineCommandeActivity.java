@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.siyamed.shapeimageview.CircularImageView;
 import com.jaychang.srv.SimpleCell;
@@ -21,13 +20,12 @@ import com.jaychang.srv.SimpleRecyclerView;
 import com.jaychang.srv.decoration.SectionHeaderProvider;
 import com.jaychang.srv.decoration.SimpleSectionHeaderProvider;
 import com.sadicomputing.foodordering.R;
-import com.sadicomputing.foodordering.adapter.CommandeAdapter;
+import com.sadicomputing.foodordering.adapter.CuisineCommandeAdapter;
 import com.sadicomputing.foodordering.entity.Categorie;
 import com.sadicomputing.foodordering.entity.CommandeArticle;
 import com.sadicomputing.foodordering.service.RetrofitService;
 import com.sadicomputing.foodordering.service.RetrofitUtlis;
 import com.sadicomputing.foodordering.utils.Constantes;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -55,19 +53,20 @@ public class CuisineCommandeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         contextView = this;
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         retrofitService = RetrofitUtlis.getRetrofitService();
         simpleRecyclerView = findViewById(R.id.reclycerViewPlatsdujour);
         mSwipeLayout = findViewById(R.id.swipeRefreshLayoutPlatsdujour);
 
         addRecyclerHeaders();
-        getAllCommandeArticlesByStatutCommande();
+        //getAllCommandeArticlesByStatutCommande();
+        getAllCommandeArticlesByStatutAndStatutCommande();
 
         mSwipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                getAllCommandeArticlesByStatutCommande();
+                //getAllCommandeArticlesByStatutCommande();
+                getAllCommandeArticlesByStatutAndStatutCommande();
             }
         });
     }
@@ -102,7 +101,7 @@ public class CuisineCommandeActivity extends AppCompatActivity {
         simpleRecyclerView.setSectionHeader(sh);
     }
 
-    private void getAllCommandeArticlesByStatutCommande() {
+    /*private void getAllCommandeArticlesByStatutCommande() {
         mSwipeLayout.setRefreshing(true);
         retrofitService.getAllCommandeArticlesByStatutCommande(1).enqueue(new Callback<List<CommandeArticle>>() {
             @Override
@@ -115,25 +114,72 @@ public class CuisineCommandeActivity extends AppCompatActivity {
                                 return (int) (article.getCommande().getIdCommande() - nextArticle.getCommande().getIdCommande());
                             }
                         });
-                        List<CommandeAdapter> cells = new ArrayList<>();
+                        List<CuisineCommandeAdapter> cells = new ArrayList<>();
                         simpleRecyclerView.removeAllCells();
                         //LOOP THROUGH ARTICLES INSTANTIATING THEIR CELLS AND ADDING TO CELLS COLLECTION
                         for (CommandeArticle article : response.body()) {
-                            CommandeAdapter cell = new CommandeAdapter(article, contextView, response.body(), simpleRecyclerView, mSwipeLayout);
+                            CuisineCommandeAdapter cell = new CuisineCommandeAdapter(article, contextView, response.body(), simpleRecyclerView, mSwipeLayout);
 
                             // There are two default cell listeners: OnCellClickListener<CELL, VH, T> and OnCellLongClickListener<CELL, VH, T>
-                        cell.setOnCellClickListener2(new SimpleCell.OnCellClickListener2<CommandeAdapter, CommandeAdapter.ViewHolder, CommandeArticle>() {
+                        cell.setOnCellClickListener2(new SimpleCell.OnCellClickListener2<CuisineCommandeAdapter, CuisineCommandeAdapter.ViewHolder, CommandeArticle>() {
                             @Override
-                            public void onCellClicked(CommandeAdapter adapter, CommandeAdapter.ViewHolder viewHolder, CommandeArticle item) {
+                            public void onCellClicked(CuisineCommandeAdapter adapter, CuisineCommandeAdapter.ViewHolder viewHolder, CommandeArticle item) {
                                 //Toast.makeText(contextView, item.getArticle().getDesignation()+"", Toast.LENGTH_LONG).show();
                             }
                         });
-                        cell.setOnCellLongClickListener2(new SimpleCell.OnCellLongClickListener2<CommandeAdapter, CommandeAdapter.ViewHolder, CommandeArticle>() {
+                        cell.setOnCellLongClickListener2(new SimpleCell.OnCellLongClickListener2<CuisineCommandeAdapter, CuisineCommandeAdapter.ViewHolder, CommandeArticle>() {
                             @Override
-                            public void onCellLongClicked(CommandeAdapter adapter, CommandeAdapter.ViewHolder viewHolder, CommandeArticle item) {
+                            public void onCellLongClicked(CuisineCommandeAdapter adapter, CuisineCommandeAdapter.ViewHolder viewHolder, CommandeArticle item) {
                                 //Toast.makeText(contextView, item.getCommande().getDate()+"", Toast.LENGTH_LONG).show();
                             }
                         });
+                            cells.add(cell);
+                        }
+                        simpleRecyclerView.addCells(cells);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<CommandeArticle>> call, Throwable t) {
+                Log.e("MESSAGE",t.getMessage());
+            }
+        });
+        mSwipeLayout.setRefreshing(false);
+    }*/
+
+    private void getAllCommandeArticlesByStatutAndStatutCommande() {
+        mSwipeLayout.setRefreshing(true);
+        retrofitService.getAllCommandeArticlesByStatutAndStatutCommande(0,1).enqueue(new Callback<List<CommandeArticle>>() {
+            @Override
+            public void onResponse(Call<List<CommandeArticle>> call, Response<List<CommandeArticle>> response) {
+                if (response.isSuccessful()){
+                    if (!response.body().isEmpty()){
+                        //CUSTOM SORT ACCORDING TO CATEGORIES
+                        Collections.sort(response.body(), new Comparator<CommandeArticle>(){
+                            public int compare(CommandeArticle article, CommandeArticle nextArticle) {
+                                return (int) (article.getCommande().getIdCommande() - nextArticle.getCommande().getIdCommande());
+                            }
+                        });
+                        List<CuisineCommandeAdapter> cells = new ArrayList<>();
+                        simpleRecyclerView.removeAllCells();
+                        //LOOP THROUGH ARTICLES INSTANTIATING THEIR CELLS AND ADDING TO CELLS COLLECTION
+                        for (CommandeArticle article : response.body()) {
+                            CuisineCommandeAdapter cell = new CuisineCommandeAdapter(article, contextView, response.body(), simpleRecyclerView, mSwipeLayout);
+
+                            // There are two default cell listeners: OnCellClickListener<CELL, VH, T> and OnCellLongClickListener<CELL, VH, T>
+                            cell.setOnCellClickListener2(new SimpleCell.OnCellClickListener2<CuisineCommandeAdapter, CuisineCommandeAdapter.ViewHolder, CommandeArticle>() {
+                                @Override
+                                public void onCellClicked(CuisineCommandeAdapter adapter, CuisineCommandeAdapter.ViewHolder viewHolder, CommandeArticle item) {
+                                    //Toast.makeText(contextView, item.getArticle().getDesignation()+"", Toast.LENGTH_LONG).show();
+                                }
+                            });
+                            cell.setOnCellLongClickListener2(new SimpleCell.OnCellLongClickListener2<CuisineCommandeAdapter, CuisineCommandeAdapter.ViewHolder, CommandeArticle>() {
+                                @Override
+                                public void onCellLongClicked(CuisineCommandeAdapter adapter, CuisineCommandeAdapter.ViewHolder viewHolder, CommandeArticle item) {
+                                    //Toast.makeText(contextView, item.getCommande().getDate()+"", Toast.LENGTH_LONG).show();
+                                }
+                            });
                             cells.add(cell);
                         }
                         simpleRecyclerView.addCells(cells);

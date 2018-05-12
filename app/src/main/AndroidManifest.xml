@@ -7,9 +7,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
@@ -34,7 +34,7 @@
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />
         <!-- [END fcm_default_channel] -->
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".activity.accueil.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,17 +42,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.accueil.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.serveur.ServeurCommandeActivity"
             android:label="@string/title_activity_serveur_commande"
-            android:parentActivityName=".activity.MainActivity"
+            android:parentActivityName=".activity.accueil.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sadicomputing.foodordering.activity.MainActivity" />
+                android:value="com.sadicomputing.foodordering.activity.accueil.MainActivity" />
         </activity>
         <activity
             android:name=".activity.serveur.ServeurPlatsdujourActivity"
@@ -102,20 +102,20 @@
         <activity
             android:name=".activity.cuisinier.CuisineCommandeActivity"
             android:label="@string/title_activity_cuisine_commande"
-            android:parentActivityName=".activity.MainActivity"
+            android:parentActivityName=".activity.accueil.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sadicomputing.foodordering.activity.MainActivity" />
+                android:value="com.sadicomputing.foodordering.activity.accueil.MainActivity" />
         </activity>
         <activity
             android:name=".activity.comptable.ComptableCommandeActivity"
             android:label="@string/title_activity_comptable_commande"
-            android:parentActivityName=".activity.MainActivity"
+            android:parentActivityName=".activity.accueil.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sadicomputing.foodordering.activity.MainActivity" />
+                android:value="com.sadicomputing.foodordering.activity.accueil.MainActivity" />
         </activity>
 
         <service android:name=".firebase.MyFirebaseMessagingService">
@@ -129,7 +129,34 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".firebase.FirebaseMainActivity"></activity>
+        <activity android:name=".firebase.FirebaseMainActivity" />
+        <activity
+            android:name=".activity.serveur.ServeurCommandesdujourActivity"
+            android:label="@string/title_activity_serveur_commandesdujour"
+            android:parentActivityName=".activity.accueil.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sadicomputing.foodordering.activity.accueil.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.cuisinier.CuisineCommandesdujourActivity"
+            android:label="@string/title_activity_cuisine_commandesdujour"
+            android:parentActivityName=".activity.accueil.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sadicomputing.foodordering.activity.accueil.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.comptable.ComptableFacturesdujourActivity"
+            android:label="@string/title_activity_comptable_facturesdujour"
+            android:parentActivityName=".activity.accueil.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sadicomputing.foodordering.activity.accueil.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

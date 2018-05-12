@@ -1,34 +1,22 @@
 package com.sadicomputing.foodordering.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.sadicomputing.foodordering.R;
-import com.sadicomputing.foodordering.activity.LoginActivity;
+import com.sadicomputing.foodordering.activity.accueil.LoginActivity;
 import com.sadicomputing.foodordering.activity.serveur.ServeurPlatsdujourActivity;
 import com.sadicomputing.foodordering.entity.Article;
 import com.sadicomputing.foodordering.entity.CommandeArticleTemporaire;
-import com.sadicomputing.foodordering.entity.Tables;
-import com.sadicomputing.foodordering.service.RetrofitService;
-import com.sadicomputing.foodordering.service.RetrofitUtlis;
 import com.sadicomputing.foodordering.utils.Constantes;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by modykane on 09/12/2017.

@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.siyamed.shapeimageview.CircularImageView;
@@ -22,15 +21,13 @@ import com.jaychang.srv.SimpleRecyclerView;
 import com.jaychang.srv.decoration.SectionHeaderProvider;
 import com.jaychang.srv.decoration.SimpleSectionHeaderProvider;
 import com.sadicomputing.foodordering.R;
-import com.sadicomputing.foodordering.activity.LoginActivity;
+import com.sadicomputing.foodordering.activity.accueil.LoginActivity;
 import com.sadicomputing.foodordering.adapter.MenuAdapter;
 import com.sadicomputing.foodordering.entity.Article;
 import com.sadicomputing.foodordering.entity.Categorie;
-import com.sadicomputing.foodordering.entity.Commande;
 import com.sadicomputing.foodordering.service.RetrofitService;
 import com.sadicomputing.foodordering.service.RetrofitUtlis;
 import com.sadicomputing.foodordering.utils.Constantes;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -15,8 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sadicomputing.foodordering.R;
-import com.sadicomputing.foodordering.activity.LoginActivity;
-import com.sadicomputing.foodordering.activity.MainActivity;
+import com.sadicomputing.foodordering.activity.accueil.LoginActivity;
+import com.sadicomputing.foodordering.activity.accueil.MainActivity;
 import com.sadicomputing.foodordering.entity.CommandeArticleTemporaire;
 import com.sadicomputing.foodordering.service.RetrofitService;
 import com.sadicomputing.foodordering.service.RetrofitUtlis;

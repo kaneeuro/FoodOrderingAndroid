@@ -24,9 +24,15 @@ public class Commande extends ExpandableGroup<CommandeArticle>{
     @SerializedName("date")
     @Expose
     private String date;
-    @SerializedName("employe")
+    @SerializedName("serveur")
     @Expose
-    private Employe employe;
+    private Employe serveur;
+    @SerializedName("cuisinier")
+    @Expose
+    private Employe cuisinier;
+    @SerializedName("comptable")
+    @Expose
+    private Employe comptable;
     @SerializedName("table")
     @Expose
     private Tables table;
@@ -63,12 +69,12 @@ public class Commande extends ExpandableGroup<CommandeArticle>{
         this.date = date;
     }
 
-    public Employe getEmploye() {
-        return employe;
+    public Employe getServeur() {
+        return serveur;
     }
 
-    public void setEmploye(Employe employe) {
-        this.employe = employe;
+    public void setServeur(Employe serveur) {
+        this.serveur = serveur;
     }
 
     public Tables getTable() {
@@ -79,12 +85,12 @@ public class Commande extends ExpandableGroup<CommandeArticle>{
         this.table = table;
     }
 
-    public Commande(String title, List<CommandeArticle> commandeArticles, Long numero, Integer statut, String date, Employe employe, Tables table) {
+    public Commande(String title, List<CommandeArticle> commandeArticles, Long numero, Integer statut, String date, Employe serveur, Tables table) {
         super(title, commandeArticles);
         this.numero = numero;
         this.statut = statut;
         this.date = date;
-        this.employe = employe;
+        this.serveur = serveur;
         this.table = table;
     }
 
@@ -92,4 +98,19 @@ public class Commande extends ExpandableGroup<CommandeArticle>{
         super(title, commandeArticles);
     }
 
+    public Employe getCuisinier() {
+        return cuisinier;
+    }
+
+    public void setCuisinier(Employe cuisinier) {
+        this.cuisinier = cuisinier;
+    }
+
+    public Employe getComptable() {
+        return comptable;
+    }
+
+    public void setComptable(Employe comptable) {
+        this.comptable = comptable;
+    }
 }

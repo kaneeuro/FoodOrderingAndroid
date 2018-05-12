@@ -25,12 +25,18 @@ public class CommandeArticle implements Parcelable{
     @SerializedName("quantite")
     @Expose
     private Long quantite;
+    @SerializedName("statut")
+    @Expose
+    private Integer statut;
     @SerializedName("article")
     @Expose
     private Article article;
     @SerializedName("commande")
     @Expose
     private Commande commande;
+    @SerializedName("cuisinier")
+    @Expose
+    private Employe cuisinier;
 
     public Long getIdCommandeArticle() {
         return idCommandeArticle;
@@ -130,5 +136,21 @@ public class CommandeArticle implements Parcelable{
 
     public String getName() {
         return name;
+    }
+
+    public Integer getStatut() {
+        return statut;
+    }
+
+    public void setStatut(Integer statut) {
+        this.statut = statut;
+    }
+
+    public Employe getCuisinier() {
+        return cuisinier;
+    }
+
+    public void setCuisinier(Employe cuisinier) {
+        this.cuisinier = cuisinier;
     }
 }

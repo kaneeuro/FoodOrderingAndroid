@@ -57,12 +57,12 @@ public class ComptableFactureCommandeActivity extends AppCompatActivity {
         textViewTotal = findViewById(R.id.totalefacture);
 
         Constantes.loadImage(getApplicationContext(),"resto.jpg", imageView);
-        textView.setText(commande.getEmploye().getRestaurant().getDesignation());
-        textView2.setText("Adresse: "+commande.getEmploye().getRestaurant().getAdresse());
-        textView3.setText("Téléphone: "+commande.getEmploye().getRestaurant().getTelephone());
+        textView.setText(commande.getServeur().getRestaurant().getDesignation());
+        textView2.setText("Adresse: "+commande.getServeur().getRestaurant().getAdresse());
+        textView3.setText("Téléphone: "+commande.getServeur().getRestaurant().getTelephone());
         textView4.setText("N° Cmde: "+commande.getNumero());
         textView5.setText("N° Table: "+commande.getTable().getNumero());
-        textView6.setText("Date: "+Constantes.formatDate(commande.getDate()));
+        textView6.setText("Date: "+commande.getDate());
 
         mAdapter = new ComptableFactureCommandeAdapter(this, commandeArticles);
 

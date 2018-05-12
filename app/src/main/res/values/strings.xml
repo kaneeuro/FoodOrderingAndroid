@@ -15,8 +15,10 @@
     <string name="action_notifications">Notifications</string>
     <string name="action_logout">Déconnexion</string>
     <string name="action_more">Détails</string>
-    <string name="commande">Commande</string>
-    <string name="message">Message</string>
+    <string name="commande">Nouvelle\n Commande</string>
+    <string name="commandecuisinier">Commandes\n en cours</string>
+    <string name="message">Commandes\n du jour</string>
+    <string name="messagecomptable">Factures\n du jour</string>
     <string name="title_activity_serveur_commande">Commande</string>
     <string name="platsdujour">Plats du jour</string>
     <string name="menudujour">Menu du jour</string>
@@ -24,7 +26,7 @@
     <string name="autres">Autres</string>
     <string name="menu">Menu</string>
     <string name="title_activity_serveur_platsdujour">Plats du jour</string>
-    <string name="facture">Facture</string>
+    <string name="facture">Factures\n en cours</string>
     <string name="title_activity_serveur_viennoiseries">Viennoiseries</string>
     <string name="title_activity_serveur_menu">Menu</string>
     <string name="title_activity_serveur_resume_commande">ServeurResumeCommandeActivity</string>
@@ -51,4 +53,7 @@
         It should describe the category of notifications that will be sent through this channel
      -->
     <string name="default_notification_channel_name" translatable="true">News</string>
+    <string name="title_activity_serveur_commandesdujour">ServeurCommandesdujourActivity</string>
+    <string name="title_activity_cuisine_commandesdujour">CuisineCommandesdujourActivity</string>
+    <string name="title_activity_comptable_facturesdujour">ComptableFacturesdujourActivity</string>
 </resources>

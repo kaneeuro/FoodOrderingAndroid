@@ -5,14 +5,21 @@ import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-import com.sadicomputing.foodordering.activity.LoginActivity;
+import com.sadicomputing.foodordering.activity.accueil.LoginActivity;
+import com.sadicomputing.foodordering.activity.comptable.ComptableCommandeActivity;
+import com.sadicomputing.foodordering.activity.cuisinier.CuisineCommandeActivity;
+import com.sadicomputing.foodordering.activity.serveur.ServeurCommandesdujourActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static com.sadicomputing.foodordering.activity.accueil.LoginActivity.compte;
+import static com.sadicomputing.foodordering.activity.accueil.LoginActivity.session;
+
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "MyFirebaseMsgService";
+    private Intent intent;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -46,7 +53,21 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             MyNotificationManager mNotificationManager = new MyNotificationManager(getApplicationContext());
 
             //creating an intent for the notification
-            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            //if the employee is not logged into the app
+            if(session == 0){
+                //redirecting to the LoginActivity when clicking on the push notification
+                intent = new Intent(getApplicationContext(), LoginActivity.class);
+            }else if (session == 1){
+                //if the user is logged into the app
+                //redirecting to the employee's commandes when clicking on the push notification
+                if (compte.getRole().equalsIgnoreCase("SERVEUR")){
+                    intent = new Intent(getApplicationContext(), ServeurCommandesdujourActivity.class);
+                }else if (compte.getRole().equalsIgnoreCase("CUISINIER")){
+                    intent = new Intent(getApplicationContext(), CuisineCommandeActivity.class);
+                }else if (compte.getRole().equalsIgnoreCase("COMPTABLE")){
+                    intent = new Intent(getApplicationContext(), ComptableCommandeActivity.class);
+                }
+            }
 
             //if there is no image
             if(imageUrl.equals("null")){

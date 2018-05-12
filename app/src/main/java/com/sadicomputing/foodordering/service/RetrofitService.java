@@ -43,6 +43,18 @@ public interface RetrofitService {
     @POST("articlestemporaires")
     Call<List<CommandeArticleTemporaire>> getArticlesTemporairesByEmploye(@Body Employe employe);
 
+    @POST("commandearticlesbyserveur")
+    Call<List<CommandeArticle>> getCommandeArticlesByEmploye(@Body Employe employe);
+
+    @GET("serveurCommandesDuJour/{serveur}")
+    Call<List<CommandeArticle>> getServeurCommandesDuJour(@Path("serveur") String login);
+
+    @GET("cuisinierCommandesDuJour/{cuisinier}")
+    Call<List<CommandeArticle>> getCuisinierCommandesDuJour(@Path("cuisinier") String login);
+
+    @GET("comptableCommandesDuJour/{comptable}")
+    Call<List<Commande>> getComptableCommandesDuJour(@Path("comptable") String login);
+
     @DELETE("temporaires/{id}")
     Call<String> deleteArticleTemporaire(@Path("id") Long id);
 
@@ -52,7 +64,6 @@ public interface RetrofitService {
     @HTTP(method = "DELETE", path = "temporaires", hasBody = true)
     Call<String> deleteAllArticlesTemporaires(@Body List<CommandeArticleTemporaire> temporaires);
 
-
     @GET("categories")
     Call<List<Categorie>> getAllCategories();
 
@@ -61,6 +72,9 @@ public interface RetrofitService {
 
     @GET("articlesbystatutcommande/{statut}")
     Call<List<CommandeArticle>> getAllCommandeArticlesByStatutCommande(@Path("statut") int statut);
+
+    @GET("articlesbystatutandstatutcommande/{statut}/{statutcommande}")
+    Call<List<CommandeArticle>> getAllCommandeArticlesByStatutAndStatutCommande(@Path("statut") int statut, @Path("statutcommande") int statutcommande);
 
     @PUT("commandearticles/{id}")
     Call<CommandeArticle> updateCommandeArticle(@Path("id") Long id, @Body CommandeArticle commandeArticle);

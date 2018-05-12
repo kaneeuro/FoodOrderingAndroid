@@ -7,14 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.sadicomputing.foodordering.R;
-import com.sadicomputing.foodordering.activity.LoginActivity;
+import com.sadicomputing.foodordering.activity.accueil.LoginActivity;
 import com.sadicomputing.foodordering.entity.Article;
 import com.sadicomputing.foodordering.entity.CommandeArticleTemporaire;
 import com.sadicomputing.foodordering.utils.Constantes;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;

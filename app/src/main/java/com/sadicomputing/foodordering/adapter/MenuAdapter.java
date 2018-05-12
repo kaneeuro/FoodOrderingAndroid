@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.jaychang.srv.SimpleCell;
 import com.jaychang.srv.SimpleViewHolder;
 import com.sadicomputing.foodordering.R;
-import com.sadicomputing.foodordering.activity.LoginActivity;
+import com.sadicomputing.foodordering.activity.accueil.LoginActivity;
 import com.sadicomputing.foodordering.activity.comptable.ComptableFactureCommandeActivity;
 import com.sadicomputing.foodordering.entity.Article;
 import com.sadicomputing.foodordering.entity.CommandeArticleTemporaire;
@@ -27,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.sadicomputing.foodordering.activity.MainActivity.mNotificationsCountCommande;
+import static com.sadicomputing.foodordering.activity.accueil.MainActivity.mNotificationsCountCommande;
 
 /**
  * Created by modykane on 11/12/2017.

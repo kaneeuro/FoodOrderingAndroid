@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_margin="16dp"
+        android:gravity="center"
         android:background="@drawable/customedittext"
         android:hint="@string/numerodelatable">
         <requestFocus />

@@ -21,10 +21,10 @@ public class Constantes {
     private static final String ALPHA_NUMERIC = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private static final String NUMERIC = "0123456789";
     private static final String SERVER_BASE_URL = "http://10.0.2.2/FoodOrdering/images/uploads/";
-    public static final String URL_REGISTER_DEVICE = "http://172.20.10.2/FoodOrdering/RegisterDevice.php";
-    public static final String URL_SEND_SINGLE_PUSH = "http://172.20.10.2/FoodOrdering/sendSinglePush.php";
-    public static final String URL_SEND_MULTIPLE_PUSH = "http://172.20.10.2/FoodOrdering/sendMultiplePush.php";
-    public static final String URL_FETCH_DEVICES = "http://172.20.10.2/FoodOrdering/GetRegisteredDevices.php";
+    public static final String URL_REGISTER_DEVICE = "http://10.0.2.2/FoodOrdering/RegisterDevice.php";
+    public static final String URL_SEND_SINGLE_PUSH = "http://10.0.2.2/FoodOrdering/sendSinglePush.php";
+    public static final String URL_SEND_MULTIPLE_PUSH = "http://10.0.2.2/FoodOrdering/sendMultiplePush.php";
+    public static final String URL_FETCH_DEVICES = "http://10.0.2.2/FoodOrdering/GetRegisteredDevices.php";
 
     private static SecureRandom rnd = new SecureRandom();
 
@@ -40,6 +40,12 @@ public class Constantes {
         SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); // EEE (E) d MMM yyyy HH:mm:ss => Monday (Mon) 01 Jan 2017 00:00:00
         Timestamp stamp = new Timestamp(Long.parseLong(strDate));
         return sf.format(new Date(stamp.getTime()));
+    }
+
+    public static String formatHeure(String strDate){
+        SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); // EEE (E) d MMM yyyy HH:mm:ss => Monday (Mon) 01 Jan 2017 00:00:00
+        Timestamp stamp = new Timestamp(Long.parseLong(strDate));
+        return sf.format(new Date(stamp.getTime())).substring(10,16);
     }
 
     public static void loadImage(Context context, String imageUrl, ImageView imageView){

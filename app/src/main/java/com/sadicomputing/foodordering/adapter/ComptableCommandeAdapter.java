@@ -62,7 +62,7 @@ public class ComptableCommandeAdapter extends RecyclerView.Adapter<ComptableComm
     public void onBindViewHolder(final ComptableCommandeAdapter.ViewHolder holder, final int position) {
         Commande item = mItems.get(position);
         holder.textView.setText(item.getNumero()+"");
-        holder.textView2.setText(Constantes.formatDate(item.getDate()));
+        holder.textView2.setText(item.getDate());
         Constantes.loadImage(mContext,"meal.png", holder.imageView);
         holder.imageView2.setVisibility(View.GONE);
         holder.imageView3.setImageResource(R.drawable.ic_action_details);

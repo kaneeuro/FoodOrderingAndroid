@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/imgbackground"
-    tools:context="com.sadicomputing.foodordering.activity.LoginActivity">
+    tools:context="com.sadicomputing.foodordering.activity.accueil.LoginActivity">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -23,7 +23,7 @@
                 android:id="@+id/logo"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@mipmap/ic_logo"
+                android:src="@drawable/logo"
                 android:layout_gravity="center"
                 android:layout_marginBottom="30dp"
                 android:layout_marginTop="50dp"
