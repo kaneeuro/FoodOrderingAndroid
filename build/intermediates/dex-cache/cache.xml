@@ -3,30 +3,30 @@
 
     <item
         is-multidex="true"
-        jar="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="/Users/modykane/AndroidStudioProjects/FormationAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
-        revision="26.0.2"
-        sha1="9024443d4f2ec524c79f4766da854451d2b5d3da">
-        <dex dex="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_ae265fbbfe5ad8bd5c72d5dbbd635cccec08ffc6/classes.dex" />
+        revision="26.0.1"
+        sha1="c3c5c0833671633ce1b635178cd1f58345474db4">
+        <dex dex="/Users/modykane/AndroidStudioProjects/FormationAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8aaab5ea7465d8ad254ef704c24d32890792e1ba/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/Users/modykane/AndroidStudioProjects/FormationAndroid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
-        revision="26.0.2"
+        revision="26.0.1"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_355cda432782269bd0daa14205ffffe61ab831c6/classes.dex" />
+        <dex dex="/Users/modykane/AndroidStudioProjects/FormationAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_0a5d74a695eebeb34496a118aa4f054c72cf1ab9/classes.dex" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/modykane/.android/build-cache/926f1aa301b29fef8c98081fd441e79184531172/output/jars/classes.jar"
+        jar="/Users/modykane/.gradle/caches/modules-2/files-2.1/com.uncopt/android.justified/1.0/d90b10f956c74ade92433bc662b7bd920bb10b72/android.justified-1.0.jar"
         jumboMode="false"
         optimize="true"
-        revision="26.0.2"
-        sha1="23bbdaadbcb0f011e809e07ae0a91e24fa55365d">
-        <dex dex="/Users/modykane/AndroidStudioProjects/FoodOrdering/app/build/intermediates/pre-dexed/debug/classes_28f81386a32afc60cd0d9a2a9696b1b56666e636.jar" />
+        revision="26.0.1"
+        sha1="d90b10f956c74ade92433bc662b7bd920bb10b72">
+        <dex dex="/Users/modykane/AndroidStudioProjects/FormationAndroid/app/build/intermediates/pre-dexed/debug/android.justified-1.0_85f7b7b1504b5f8256d49a4ed017d3ca773ad78f.jar" />
     </item>
 
 </items>
