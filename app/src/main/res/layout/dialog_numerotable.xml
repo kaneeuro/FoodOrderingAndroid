@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <!--<ImageView
+        android:src="@drawable/icons8_meal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:background="@null"
+        android:contentDescription="@string/app_name" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="@color/colorAccent"
+        android:text="@string/numerotable" />-->
+    <EditText
+        android:id="@+id/numerotable"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:background="@drawable/customedittext"
+        android:hint="@string/numerodelatable">
+        <requestFocus />
+    </EditText>
+</LinearLayout>

@@ -1,11 +1,59 @@
 <resources>
-    <string name="app_name">Zuulu Fact</string>
-    <string name="logo">zuulu logo</string>
-    <string name="hint_email">Entrez votre référence</string>
-    <string name="btn_login">Se connecter</string>
-    <string name="title_activity_invoices">Mes Factures</string>
-    <string name="solde"><b>Solde:</b></string>
-    <string name="factures">Factures(0)</string>
-    <string name="title_activity_details">Détails Facture</string>
-    <string name="payer">Payer</string>
+    <string name="app_name">Food Ordering</string>
+    <string name="logo">logo de l\'application</string>
+    <string name="hint_email">Email</string>
+    <string name="btn_login">Se Connecter</string>
+    <string name="hint_login">Login</string>
+    <string name="hint_password">Mot de passe</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Paramètres</string>
+    <string name="password_oublie">Mot de passe oublié ?</string>
+    <string name="action_notifications">Notifications</string>
+    <string name="action_logout">Déconnexion</string>
+    <string name="action_more">Détails</string>
+    <string name="commande">Nouvelle\n Commande</string>
+    <string name="commandecuisinier">Commandes\n en cours</string>
+    <string name="message">Commandes\n du jour</string>
+    <string name="messagecomptable">Factures\n du jour</string>
+    <string name="title_activity_serveur_commande">Commande</string>
+    <string name="platsdujour">Plats du jour</string>
+    <string name="menudujour">Menu du jour</string>
+    <string name="viennoiseries">Viennoiseries</string>
+    <string name="autres">Autres</string>
+    <string name="menu">Menu</string>
+    <string name="title_activity_serveur_platsdujour">Plats du jour</string>
+    <string name="facture">Factures\n en cours</string>
+    <string name="title_activity_serveur_viennoiseries">Viennoiseries</string>
+    <string name="title_activity_serveur_menu">Menu</string>
+    <string name="title_activity_serveur_resume_commande">ServeurResumeCommandeActivity</string>
+    <string name="passerlacommande">Passer la commande</string>
+    <string name="total">Total :</string>
+    <string name="prixtotal">Prix total</string>
+    <string name="prixarticle">prix</string>
+    <string name="articlecommande">Article</string>
+    <string name="quantite">1</string>
+    <string name="title_activity_comptable_facture_commande">ComptableFactureCommandeActivity</string>
+    <string name="action_commande">Commande</string>
+    <string name="pasdecommande">Vos commandes apparaîtront ici.</string>
+    <string name="numerotable">Numéro de la table</string>
+    <string name="numerodelatable">Saisir le numéro de la table</string>
+    <string name="action_suivant">Suivant</string>
+    <string name="action_add">Ajouter article</string>
+    <string name="title_activity_cuisine_commande">CuisineCommandeActivity</string>
+    <string name="title_activity_comptable_commande">ComptableCommandeActivity</string>
+    <string name="imprimerfacture">Imprimer la facture</string>
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <!--
+        This is the name that users will see when interacting with this channel.
+        It should describe the category of notifications that will be sent through this channel
+     -->
+    <string name="default_notification_channel_name" translatable="true">News</string>
+    <string name="title_activity_serveur_commandesdujour">ServeurCommandesdujourActivity</string>
+    <string name="title_activity_cuisine_commandesdujour">CuisineCommandesdujourActivity</string>
+    <string name="title_activity_comptable_facturesdujour">ComptableFacturesdujourActivity</string>
 </resources>
